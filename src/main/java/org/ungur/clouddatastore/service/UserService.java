@@ -24,7 +24,7 @@ public class UserService {
     @PostConstruct
     public void initializeKeyFactories() {
         log.info("Initializing key factories");
-        userKeyFactory = datastore.newKeyFactory().kind("User");
+        userKeyFactory = datastore.newKeyFactory().setKind("User");
     }
 
     public Entity createUser(User user) {
@@ -42,7 +42,7 @@ public class UserService {
 
     private Entity createUserEntity(User user) {
         Key key = userKeyFactory.newKey(user.getId());
-        return Entity.builder(key)
+        return Entity.newBuilder(key)
                 .set("email", user.getEmail())
                 .set("password", user.getPassword())
                 .set("fullName", user.getFullName())

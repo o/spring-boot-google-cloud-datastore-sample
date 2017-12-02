@@ -15,6 +15,6 @@ public class Application {
 
     @Bean
     public Datastore cloudDatastoreService() {
-        return DatastoreOptions.defaultInstance().service();
+        return DatastoreOptions.getDefaultInstance().getService();
     }
 }
